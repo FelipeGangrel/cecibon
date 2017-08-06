@@ -1,0 +1,91 @@
+
+// Fonts
+// @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+//bourbon
+@import "node_modules/bourbon/app/assets/stylesheets/_bourbon"; 
+
+@import "admin/components/navbar";
+
+
+body{
+  background-color: #e5e5e5;
+  color: #666;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialised;
+}
+
+a:not(.link){
+  text-decoration: none;
+}
+
+
+div#page-content{
+  @include transition();
+  @include transition-duration(0.3s);
+  padding-top: 70px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+nav#navbar{
+  @include position(fixed, 0px null null 0px);
+  @include transition();
+  @include transition-duration(0.3s);
+  box-shadow: 0px 2px 2px 5px 5px rgba(#000, .3);
+  background-color: #fff;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  z-index: 1;
+  label#toggle{
+    font-size: 40px;
+  }
+}
+
+div#sidebar{
+  @include position(fixed, 0px 0 0px -260px);
+  @include transition();
+  @include transition-duration(0.3s);
+  background-color: #333;
+  padding: 38px;
+  width: 240px;
+  li{
+    color: #e5e5e5;
+  }
+}
+
+input#sidebar-toggler{
+  display: none;
+}
+
+input#sidebar-toggler:checked + .page-wrap{
+
+  div#sidebar{
+    left: 0px;
+  }
+  
+  nav#navbar{
+    left: 240px;
+    width: calc(100% - 240px);
+  }
+
+  div#page-content{
+    padding-left: 260px;
+  }
+
+}
+
+
+
+
+
+
+
