@@ -7,3 +7,250 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// baase
+body{
+  background-color: #fff;
+  color: #666;
+  font-family: 'Montserrat', sans-serif;
+  padding-top: 96px;
+}
+
+a:not(.link){
+  text-decoration: none;
+}
+
+// buttons
+.button{
+  @extend .btn;
+  @extend .btn-primary;
+  border-radius: 0 !important;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 16px;
+  text-transform: uppercase;
+}
+
+// navbar
+nav#nav-main{
+  background-color: #fff;
+  color: $chocolate;
+  height: 96px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9;
+
+  .wrapper{
+    display: flex;
+    height: 96px;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1170px;
+
+    > div{
+      align-self: center;
+    }
+
+    div.logo{
+      background-image: url('/images/logo.png');
+      font-size: 0px;
+      height: 67px;
+      width: 187px;
+      a{
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    div.menu{
+      ul li {
+        display: inline-block;
+        font-size: 12px;
+        margin: 0 15px;
+        a{
+          color: $chocolate;
+          font-weight: bold;
+        }
+      }
+    }
+
+    div.search-and-cart{
+      i{ font-size: 20px; }
+      i.with-bubble {
+        position: relative;
+        span{
+          background-color: $vermelho;
+          border-radius: 50%;
+          color: #fff;
+          display: block;
+          font-size: 10px;
+          font-weight: bold;
+          height: 18px;
+          line-height: 18px;
+          position: absolute;
+          right: -10px;
+          text-align: center;
+          top: -10px;
+          width: 18px;
+        }
+      }
+    }
+    
+  }
+
+}
+
+// home
+div#home-slides{
+
+  position: relative;
+  overflow: hidden;
+
+  div.navigation{
+    background-color: rgba(red, .3);
+    bottom: 0;
+    // height: calc(100vh * 3 - 96px);
+    position: absolute;
+    right: 0; 
+    top: 0; 
+
+    .wrapper{
+      position: relative;
+      
+      .wrapper2{
+        align-items: center;
+        background-color: red;
+        display: flex;
+        flex-direction: column;
+        height: calc(100vh - 96px);
+        justify-content: space-around;
+        margin-left: 0;
+        margin-top: 0;
+        position: fixed;
+        right: 0;
+        
+        .wrapper3{
+          align-self: center;
+        }
+
+      }
+
+    }
+
+  }
+
+  div.slide{
+    align-items: center;
+    background-color: burlywood;
+    display: flex;
+    height: calc(100vh - 96px);
+    min-height: 800px;
+    &:nth-child(even){
+      background-color: darken(burlywood, 10%);
+    }
+
+    .wrapper{
+      align-self: center;
+      color: #fff;
+      margin: 0 auto;
+      max-width: 820px;
+      padding: 10px;
+      width: 100%;
+      h2{
+        margin: 0;
+      }
+      div.description{
+        max-width: 480px;
+      }
+    }
+
+  }
+
+}
+
+div#produtos-loja{
+  background-color: #EDEDEC;
+  .wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    .produto{
+      width: 25%;
+      padding: 15px;
+      .wrapper{
+        border: 1px solid #eee;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 36px 0;
+        figure{
+          max-width: 172px;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+
+// bottom
+div#newsletter{
+  background-color: #fafafa;
+  padding: 32px 0;
+  text-align: center;
+  h2{
+    color: $chocolate;
+    font-weight: bold;
+    margin-top: 0;
+  }
+  form > div{
+    display: flex;
+    input:not(:last-child){
+      margin-right: 5px;
+    }
+  }
+}
+
+footer{
+  height: 100px;
+  .wrapper{
+    color: $chocolate;
+    display: flex;
+    height: 100px;
+    justify-content: space-between;
+
+    > div {
+      align-self: center;
+    }
+
+    div.menu{
+      ul li {
+        display: inline-block;
+        font-size: 12px;
+        margin: 0 15px;
+        a{
+          color: $chocolate;
+          font-weight: bold;
+        }
+      }
+    }
+    
+    div.links{
+      ul li {
+        display: inline-block;
+        font-size: 12px;
+        margin: 0 8px;
+        a{
+          color: $chocolate;
+        }
+      }
+      ul li:first-child(){
+        margin-right: 80px;
+      }
+    }
+
+  }
+}

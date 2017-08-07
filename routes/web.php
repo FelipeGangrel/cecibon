@@ -11,13 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+
+// loja
+Route::get('/', 'LojaController@home')->name('loja.home');
+Route::get('/produtos', 'LojaController@produtos')->name('loja.produtos');
+Route::get('/sobre', 'LojaController@sobre')->name('loja.sobre');
+Route::get('/blog', 'LojaController@blog')->name('loja.blog');
+Route::get('/contato', 'LojaController@contato')->name('loja.contato');
 
 // Admin
 Route::get('/admin', 'AdminController@index')->name('admin.home');
