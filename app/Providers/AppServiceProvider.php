@@ -4,6 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use App\Repositories\UserRepositoryInterface;
+use App\Repositories\UserRepository;
+use App\Entities\User;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +27,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(UserRepositoryInterface::class, function($app) {
+            return new UserRepository(
+                $app['em'],
+                $app['em']->getClassMetaData(User::class)
+            );
+        });
     }
 }

@@ -18,7 +18,7 @@ class AdminController extends Controller
 
     public function index()
     {   
-        alert()->message('Message', 'Optional Title');
+        // alert()->message('Message', 'Optional Title');
         return view('admin.home');
     }
     

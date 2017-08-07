@@ -71,4 +71,13 @@ class User implements AuthenticatableContract, CanResetPasswordContract
         $this->email = $email;
     }
 
+    public function fields()
+    {
+        return [
+            'name',
+            'email',
+            'password',
+        ];
+    }
+
 }
