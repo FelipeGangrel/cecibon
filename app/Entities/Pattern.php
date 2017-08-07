@@ -11,7 +11,6 @@ use App\Traits\Entities\UsingVersion;
 use LaravelDoctrine\Extensions\Timestamps\Timestamps;
 use App\Traits\Entities\Deleteable;
 
-
 /**
  * @ORM\Entity
  * @ORM\Table(name="patterns")
