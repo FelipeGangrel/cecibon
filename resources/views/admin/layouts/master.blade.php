@@ -56,9 +56,9 @@
 
         <div id="sidebar">
             <ul class="list-unstyled">
-                <li><a href="{{ url('/admin') }}">Menu item 1</a></li>
-                <li><a href="{{ url('/admin') }}">Menu item 2</a></li>
-                <li><a href="{{ url('/admin') }}">Menu item 3</a></li>
+                <li><a href="{{ url('/admin') }}">Home</a></li>
+                <li><a href="{{ url('/admin/produtos') }}">Produtos</a></li>
+                <li><a href="{{ url('/admin/usuarios') }}">Usuários</a></li>
                 <li><a href="{{ url('/admin') }}">Menu item 4</a></li>
                 <li><a href="{{ url('/admin') }}">Menu item 5</a></li>
             </ul>

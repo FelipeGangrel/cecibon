@@ -24,3 +24,4 @@ Route::get('/contato', 'LojaController@contato')->name('loja.contato');
 
 // Admin
 Route::get('/admin', 'AdminController@index')->name('admin.home');
+Route::get('/admin/usuarios', 'UserController@index')->name('admin.users');

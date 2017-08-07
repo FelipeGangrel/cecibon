@@ -55,11 +55,16 @@ div#sidebar{
   @include position(fixed, 0px 0 0px -260px);
   @include transition();
   @include transition-duration(0.3s);
-  background-color: #333;
+  background-color: darken($chocolate, 10%);
   padding: 38px;
   width: 240px;
   li{
     color: #e5e5e5;
+    padding: 5px 0;
+    border-bottom: 1px solid $chocolate;
+    a{
+      color: #e5e5e5;
+    }
   }
 }
 
@@ -79,7 +84,7 @@ input#sidebar-toggler:checked + .page-wrap{
   }
 
   div#page-content{
-    padding-left: 260px;
+    padding-left: 240px;
   }
 
 }

@@ -6,8 +6,6 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
-// use Illuminate\Foundation\Testing\DatabaseMigrations;
-// use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\Repositories\UserRepositoryInterface;
 
 class UserRepositoryTest extends TestCase
@@ -57,7 +55,7 @@ class UserRepositoryTest extends TestCase
     public function testFindAll()
     {
         $users = $this->repository->findAll();
-        $this->assertConstainsOnlyInstancesOf(User::class, $users);
+        $this->assertContainsOnlyInstancesOf(\App\Entities\User::class, $users);
     }
 
     public function testDelete()
@@ -66,7 +64,5 @@ class UserRepositoryTest extends TestCase
         $result = $this->repository->delete($user);
         $this->assertTrue($result);
     }
-
-    
 
 }
