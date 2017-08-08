@@ -37,7 +37,6 @@ class UserRepositoryTest extends TestCase
         ]);
     }
 
-
     public function testUpdateAndSave()
     {   
         $data = [

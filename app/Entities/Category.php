@@ -81,4 +81,11 @@ class Category
     $this->parent = $parent;
   }
 
+  public function fields()
+  {
+    return [
+      'name',
+    ];
+  }
+
 }

@@ -36,5 +36,12 @@ class AppServiceProvider extends ServiceProvider
                 $app['em']->getClassMetaData(\App\Entities\Product::class)
             );
         });
+
+        $this->app->bind(\App\Repositories\CategoryRepositoryInterface::class, function($app) {
+            return new \App\Repositories\CategoryRepository(
+                $app['em'],
+                $app['em']->getClassMetaData(\App\Entities\Category::class)
+            );
+        });
     }
 }

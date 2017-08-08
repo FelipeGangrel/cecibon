@@ -18,6 +18,7 @@ Auth::routes();
 // Api interna
 
 Route::get('api/users-data', 'ApiController@userData');
+Route::get('api/products-data', 'ApiController@productData');
 
 // loja
 Route::get('/', 'LojaController@home')->name('loja.home');

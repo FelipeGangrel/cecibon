@@ -103,4 +103,13 @@ class Product
     return $this->productImages;
   }
 
+  public function fields()
+  {
+    return [
+      'name',
+      'category',
+    ];
+
+  }
+
 }

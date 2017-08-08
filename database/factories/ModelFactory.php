@@ -23,3 +23,15 @@ $factory->define(App\Entities\User::class, function(Faker\Generator $faker) {
     ];
 
 });
+
+$factory->define(App\Entities\Category::class, function(Faker\Generator $faker) {
+    return [
+        'name' => $faker->word . " " . $faker->word,        
+    ];
+});
+
+$factory->define(App\Entities\Product::class, function(Faker\Generator $faker) {
+    return [
+        'name' => $faker->word . " " . $faker->word,
+    ];
+});
