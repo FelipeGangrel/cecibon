@@ -36,6 +36,25 @@ class DoctrineBaseRepository extends EntityRepository
     return $entity;
   }
 
+  public function prepareToJson(array $objects, array $fields)
+  {
+      $get = 'get';
+      $result = [];
+      foreach($objects as $object){
+          
+          $member = [];
+          foreach($fields as $field){
+              $getter = $get.Inflector::classify($field);
+              $member[$field] = $object->$getter();
+          }
+          $result[] = $member;
+          
+          
+      }
+
+      return $result;
+  }
+
   public function update(array $data, $id)
   {
     $entity = $this->find($id);
