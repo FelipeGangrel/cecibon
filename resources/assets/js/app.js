@@ -16,8 +16,8 @@ window.Vue = require('vue');
  */
 
 Vue.component('example', require('./components/Example.vue'));
-
 Vue.component('product-grid', require('./components/ProductGrid.vue'));
+Vue.component('user-grid', require('./components/UserGrid.vue'));
 
 const app = new Vue({
     el: '#app'

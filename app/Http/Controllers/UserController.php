@@ -20,8 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = $this->repo->findAll();
-        return view('admin.users', compact('users'));
+        return view('admin.users.index');
     }
 
     /**

@@ -29,5 +29,5 @@ Route::get('/contato', 'LojaController@contato')->name('loja.contato');
 
 // Admin
 Route::get('/admin', 'AdminController@index')->name('admin.home');
-Route::get('/admin/produtos', 'ProductController@index')->name('admin.products');
-Route::get('/admin/usuarios', 'UserController@index')->name('admin.users');
+Route::get('/admin/produtos', 'ProductController@index')->name('admin.products.index');
+Route::get('/admin/usuarios', 'UserController@index')->name('admin.users.index');

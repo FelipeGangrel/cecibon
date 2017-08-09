@@ -11,16 +11,9 @@
   <div class="panel panel-default">
     <div class="panel-heading"><h4>Usuários</h4></div>
     <div class="panel-body">
-      <table class="table">
-        @foreach($users as $user)
-          <tr>
-            <td>{{$user->getName()}}</td>
-          </tr>
-        @endforeach
-      </table>
+      <user-grid></user-grid>
     </div>
   </div>
-
 
 </div>
 
