@@ -42090,144 +42090,132 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        this.loadData();
+  mounted: function mounted() {
+    this.loadData();
+  },
+  data: function data() {
+    return {
+      query: '',
+      gridColumns: ['Id', 'Nome', 'Categoria', 'Criado'],
+      gridData: [],
+      total: null,
+      next_page_url: null,
+      prev_page_url: null,
+      last_page: null,
+      current_page: null,
+      pages: [],
+      first_page_url: null,
+      last_page_url: null,
+      go_to_page: null,
+      sortOrder: 1,
+      sortKey: ''
+    };
+  },
+  methods: {
+    sortBy: function sortBy(key) {
+      this.sortKey = key;
+      this.sortOrder = this.sortOrder == 1 ? -1 : 1;
+      this.getData(1);
     },
-    data: function data() {
-        return {
-            query: '',
-            gridColumns: ['Id', 'Nome', 'Categoria', 'Criado'],
-            gridData: [],
-            total: null,
-            next_page_url: null,
-            prev_page_url: null,
-            last_page: null,
-            current_page: null,
-            pages: [],
-            first_page_url: null,
-            last_page_url: null,
-            go_to_page: null,
-            sortOrder: 1,
-            sortKey: ''
-        };
+    search: function search(query) {
+      this.getData(query);
     },
-    methods: {
-        sortBy: function sortBy(key) {
-            this.sortKey = key;
-            this.sortOrder = this.sortOrder == 1 ? -1 : 1;
-            this.getData(1);
-        },
-        search: function search(query) {
-            this.getData(query);
-        },
-        loadData: function loadData() {
-            $.getJSON('/api/products-data', function (data) {
-                this.gridData = data.data;
-                this.total = data.total;
-                this.last_page = data.last_page;
-                this.next_page_url = data.next_page_url;
-                this.prev_page_url = data.prev_page_url;
-                this.current_page = data.current_page;
-                this.first_page_url = '/api/products-data?page=1';
-                this.last_page_url = '/api/products-data?page=' + this.last_page;
-                this.setPageNumbers();
-            }.bind(this));
-        },
-        setPageNumbers: function setPageNumbers() {
-            for (var i = 1; i <= this.last_page; i++) {
-                this.pages.push(i);
-            }
-        },
-        getData: function getData(request) {
-            var getPage = void 0;
-            switch (request) {
-                case this.prev_page_url:
-                    getPage = this.prev_page_url + '&column=' + this.sortKey + '&direction=' + this.sortOrder;
-                    break;
-                case this.next_page_url:
-                    getPage = this.next_page_url + '&column=' + this.sortKey + '&direction=' + this.sortOrder;
-                    break;
-                case this.first_page_url:
-                    getPage = this.first_page_url + '&column=' + this.sortKey + '&direction=' + this.sortOrder;
-                    break;
-                case this.last_page_url:
-                    getPage = this.last_page_url + '&column=' + this.sortKey + '&direction=' + this.sortOrder;
-                    break;
-                case this.query:
-                    getPage = '/api/products-data?' + 'keyword=' + this.query + '&column=' + this.sortKey + '&direction=' + this.sortOrder;
-                    break;
-                case this.go_to_page:
-                    if (this.go_to_page != '' && this.pageInRange()) {
-                        getPage = '/api/products-data?' + 'page=' + this.go_to_page + '&column=' + this.sortKey + '&direction=' + this.sortOrder + '&keyword=' + this.query;
-                        this.clearPageNumberInputBox();
-                    } else {
-                        alert('Please enter a valid page number');
-                    }
-                    break;
-                default:
-                    getPage = '/api/products-data?' + 'page=' + request + '&column=' + this.sortKey + '&direction=' + this.sortOrder + '&keyword=' + this.query;
-                    break;
+    loadData: function loadData() {
+      $.getJSON('/api/products-data', function (data) {
+        this.gridData = data.data;
+        this.total = data.total;
+        this.last_page = data.last_page;
+        this.next_page_url = data.next_page_url;
+        this.prev_page_url = data.prev_page_url;
+        this.current_page = data.current_page;
+        this.first_page_url = '/api/products-data?page=1';
+        this.last_page_url = '/api/products-data?page=' + this.last_page;
+        this.setPageNumbers();
+      }.bind(this));
+    },
+    setPageNumbers: function setPageNumbers() {
+      for (var i = 1; i <= this.last_page; i++) {
+        this.pages.push(i);
+      }
+    },
+    getData: function getData(request) {
+      var getPage = void 0;
+      switch (request) {
+        case this.prev_page_url:
+          getPage = this.prev_page_url + '&column=' + this.sortKey + '&direction=' + this.sortOrder;
+          break;
+        case this.next_page_url:
+          getPage = this.next_page_url + '&column=' + this.sortKey + '&direction=' + this.sortOrder;
+          break;
+        case this.first_page_url:
+          getPage = this.first_page_url + '&column=' + this.sortKey + '&direction=' + this.sortOrder;
+          break;
+        case this.last_page_url:
+          getPage = this.last_page_url + '&column=' + this.sortKey + '&direction=' + this.sortOrder;
+          break;
+        case this.query:
+          getPage = '/api/products-data?' + 'keyword=' + this.query + '&column=' + this.sortKey + '&direction=' + this.sortOrder;
+          break;
+        case this.go_to_page:
+          if (this.go_to_page != '' && this.pageInRange()) {
+            getPage = '/api/products-data?' + 'page=' + this.go_to_page + '&column=' + this.sortKey + '&direction=' + this.sortOrder + '&keyword=' + this.query;
+            this.clearPageNumberInputBox();
+          } else {
+            alert('Please enter a valid page number');
+          }
+          break;
+        default:
+          getPage = '/api/products-data?' + 'page=' + request + '&column=' + this.sortKey + '&direction=' + this.sortOrder + '&keyword=' + this.query;
+          break;
 
-                    console.log(getPage);
-            }
-            if (this.query == '' && getPage != null) {
-                $.getJSON(getPage, function (data) {
-                    this.gridData = data.data;
-                    this.total = data.total;
-                    this.last_page = data.last_page;
-                    this.next_page_url = data.next_page_url;
-                    this.prev_page_url = data.prev_page_url;
-                    this.current_page = data.current_page;
-                }.bind(this));
-            } else {
-                if (getPage != null) {
-                    $.getJSON(getPage, function (data) {
-                        this.gridData = data.data;
-                        this.total = data.total;
-                        this.last_page = data.last_page;
-                        this.next_page_url = data.next_page_url == null ? null : data.next_page_url + '&keyword=' + this.query;
-                        this.prev_page_url = data.prev_page_url == null ? null : data.prev_page_url + '&keyword=' + this.query;
-                        this.first_page_url = '/api/products-data?page=1&keyword=' + this.query;
-                        this.last_page_url = '/api/products-data?page=' + this.last_page + '&keyword=' + this.query;
-                        this.current_page = data.current_page;
-                        this.resetPageNumbers();
-                    }.bind(this));
-                }
-            }
-        },
-        checkPage: function checkPage(page) {
-            return page == this.current_page;
-        },
-        resetPageNumbers: function resetPageNumbers() {
-            this.pages = [];
-            for (var i = 1; i <= this.last_page; i++) {
-                this.pages.push(i);
-            }
-        },
-        checkUrlNotNull: function checkUrlNotNull(url) {
-            return url != null;
-        },
-        clearPageNumberInputBox: function clearPageNumberInputBox() {
-            return this.go_to_page = '';
-        },
-        pageInRange: function pageInRange() {
-            return this.go_to_page <= parseInt(this.last_page);
+          console.log(getPage);
+      }
+      if (this.query == '' && getPage != null) {
+        $.getJSON(getPage, function (data) {
+          this.gridData = data.data;
+          this.total = data.total;
+          this.last_page = data.last_page;
+          this.next_page_url = data.next_page_url;
+          this.prev_page_url = data.prev_page_url;
+          this.current_page = data.current_page;
+        }.bind(this));
+      } else {
+        if (getPage != null) {
+          $.getJSON(getPage, function (data) {
+            this.gridData = data.data;
+            this.total = data.total;
+            this.last_page = data.last_page;
+            this.next_page_url = data.next_page_url == null ? null : data.next_page_url + '&keyword=' + this.query;
+            this.prev_page_url = data.prev_page_url == null ? null : data.prev_page_url + '&keyword=' + this.query;
+            this.first_page_url = '/api/products-data?page=1&keyword=' + this.query;
+            this.last_page_url = '/api/products-data?page=' + this.last_page + '&keyword=' + this.query;
+            this.current_page = data.current_page;
+            this.resetPageNumbers();
+          }.bind(this));
         }
+      }
+    },
+    checkPage: function checkPage(page) {
+      return page == this.current_page;
+    },
+    resetPageNumbers: function resetPageNumbers() {
+      this.pages = [];
+      for (var i = 1; i <= this.last_page; i++) {
+        this.pages.push(i);
+      }
+    },
+    checkUrlNotNull: function checkUrlNotNull(url) {
+      return url != null;
+    },
+    clearPageNumberInputBox: function clearPageNumberInputBox() {
+      return this.go_to_page = '';
+    },
+    pageInRange: function pageInRange() {
+      return this.go_to_page <= parseInt(this.last_page);
     }
+  }
 });
 
 /***/ }),
@@ -42243,7 +42231,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "search"
     }
-  }, [_vm._v("\n            Search "), _c('input', {
+  }, [_vm._v("\n      Search "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -42267,7 +42255,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "pull-right"
-  }, [_vm._v("\n            " + _vm._s(_vm.total) + " Total Results\n        ")]), _vm._v(" "), _c('section', {
+  }, [_vm._v("\n      " + _vm._s(_vm.total) + " Total Results\n    ")]), _vm._v(" "), _c('section', {
     staticClass: "panel"
   }, [_c('div', {
     staticClass: "panel-body"
@@ -42284,18 +42272,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.sortBy(key)
         }
       }
-    }, [_vm._v("\n                                " + _vm._s(key) + "\n                                "), _c('span', {
+    }, [_vm._v("\n                " + _vm._s(key) + "\n                "), _c('span', {
       staticClass: "arrow",
       class: _vm.sortOrder > 0 ? 'asc' : 'dsc'
     })])
   }), _vm._v(" "), _c('th', [_vm._v("Actions")])], 2)]), _vm._v(" "), _c('tbody', _vm._l((_vm.gridData), function(row) {
     return _c('tr', {
       key: row
-    }, [_c('td', [_vm._v("\n                                " + _vm._s(row.Id) + "\n                            ")]), _vm._v(" "), _c('td', [_c('a', {
+    }, [_c('td', [_vm._v(_vm._s(row.Id))]), _vm._v(" "), _c('td', [_c('a', {
       attrs: {
         "href": '/produto/' + row.Id
       }
-    }, [_vm._v(" " + _vm._s(row.Nome))])]), _vm._v(" "), _c('td', [_vm._v("\n                                " + _vm._s(row.Categoria) + "\n                            ")]), _vm._v(" "), _c('td', [_vm._v("\n                                " + _vm._s(row.Criado) + "\n                            ")]), _vm._v(" "), _c('td', [_c('a', {
+    }, [_vm._v(" " + _vm._s(row.Nome))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(row.Categoria))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(row.Criado))]), _vm._v(" "), _c('td', [_c('a', {
       attrs: {
         "href": '/produto/' + row.Id + '/edit'
       }
@@ -42304,10 +42292,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "type": "button"
       }
-    }, [_vm._v("\n                                        Edit\n                                     ")])])])])
+    }, [_vm._v("Edit")])])])])
   }))])]), _vm._v(" "), _c('div', {
     staticClass: "pull-right"
-  }, [_vm._v("\n                page " + _vm._s(_vm.current_page) + " of " + _vm._s(_vm.last_page) + " pages\n            ")])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n        page " + _vm._s(_vm.current_page) + " of " + _vm._s(_vm.last_page) + " pages\n      ")])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "pull-right for-page-button"
@@ -42318,7 +42306,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.getData(_vm.go_to_page)
       }
     }
-  }, [_vm._v("\n                            Go To Page:")]), _vm._v(" "), _c('input', {
+  }, [_vm._v("Go To Page:")]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
