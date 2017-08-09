@@ -11,7 +11,7 @@
   <div class="panel panel-default">
     <div class="panel-heading"><h4>Produtos</h4></div>
     <div class="panel-body">
-      
+      <product-grid></product-grid>
     </div>
   </div>
 

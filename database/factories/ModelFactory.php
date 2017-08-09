@@ -31,7 +31,11 @@ $factory->define(App\Entities\Category::class, function(Faker\Generator $faker) 
 });
 
 $factory->define(App\Entities\Product::class, function(Faker\Generator $faker) {
+
+    $repo = \App::make(App\Repositories\CategoryRepositoryInterface::class);
+
     return [
         'name' => $faker->word . " " . $faker->word,
+        'category' => $repo->find(rand(1,10)),
     ];
 });
